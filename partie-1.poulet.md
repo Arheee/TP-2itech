@@ -28,7 +28,7 @@ Réalisez les requêtes suivantes :
 ### Quels sont les tickets qui comportent l’article d’ID 500, afficher le numéro de ticket uniquement ?
 
 ```mysql
-select * from ventes WHERE ID_ARTICLE = 500
+select NUMERO_TICKET from ventes WHERE ID_ARTICLE = 500
 ```
 
 - Il n'y a pas de jointure à faire : tout est déjà dans la table `ventes`
@@ -36,7 +36,7 @@ select * from ventes WHERE ID_ARTICLE = 500
 ### Afficher les tickets du 15/01/2014.
 
 ```mysql
-SELECT * from ticket where DATE_VENTE = "2014-01-15 00:00:00"
+SELECT NUMERO_TICKET from ticket where DATE_VENTE = "2014-01-15 00:00:00"
 ```
 
 - La requête est très similaire à la précédente
@@ -44,7 +44,7 @@ SELECT * from ticket where DATE_VENTE = "2014-01-15 00:00:00"
 ### Afficher les tickets émis du 15/01/2014 et le 17/01/2014.
 
 ```mysql
-SELECT * from ticket where DATE_VENTE between "2014-01-15 00:00:00" and "2014-01-17 00:00:00"
+SELECT NUMERO_TICKET , DATE_VENTE from ticket where DATE_VENTE between "2014-01-15 00:00:00" and "2014-01-17 00:00:00"
 ```
 
 - Vous aurez besoin de la clause `BETWEEN` pour cette requête
@@ -53,7 +53,7 @@ SELECT * from ticket where DATE_VENTE between "2014-01-15 00:00:00" and "2014-01
 ### Afficher la liste des articles apparaissant à 50 et plus exemplaires sur un ticket.
 
 ```mysql
-SELECT * from ventes inner join  article where QUANTITE >= 50 
+SELECT NUMERO_TICKET, NOM_ARTICLE from ventes inner join  article where QUANTITE >= 50 
 ```
 
 - La table qui vous intéresse est la table `ventes`
