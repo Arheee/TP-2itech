@@ -99,8 +99,9 @@ WHERE year(DATE_VENTE)= 2014 AND month(DATE_VENTE) IN ('3' , '6')
 ### Afficher la liste des bières classée par couleur. (Afficher l’id et le nom)
 
 ```mysql
-SELECT ID_ARTICLE, NOM_ARTICLE 
-FROM article INNER JOIN couleur 
+SELECT ID_ARTICLE, NOM_ARTICLE, NOM_COULEUR
+FROM article 
+JOIN beer.couleur ON article.ID_Couleur = Couleur.ID_Couleur
 ORDER BY NOM_COULEUR
 ```
 
