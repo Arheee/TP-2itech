@@ -36,7 +36,7 @@ select * from ventes WHERE ID_ARTICLE = 500
 ### Afficher les tickets du 15/01/2014.
 
 ```mysql
-
+SELECT * from ticket where DATE_VENTE = "2014-01-15 00:00:00"
 ```
 
 - La requête est très similaire à la précédente
@@ -44,16 +44,16 @@ select * from ventes WHERE ID_ARTICLE = 500
 ### Afficher les tickets émis du 15/01/2014 et le 17/01/2014.
 
 ```mysql
-
+SELECT * from ticket where DATE_VENTE between "2014-01-15 00:00:00" and "2014-01-17 00:00:00"
 ```
 
 - Vous aurez besoin de la clause `BETWEEN` pour cette requête
 
 
-### Editer la liste des articles apparaissant à 50 et plus exemplaires sur un ticket.
+### Afficher la liste des articles apparaissant à 50 et plus exemplaires sur un ticket.
 
 ```mysql
-
+SELECT * from ventes inner join  article where QUANTITE >= 50 
 ```
 
 - La table qui vous intéresse est la table `ventes`
@@ -62,7 +62,7 @@ select * from ventes WHERE ID_ARTICLE = 500
 ### Quelles sont les tickets émis au mois de mars 2014.
 
 ```mysql
-
+SELECT ANNEE , NUMERO_TICKET from ticket where month('2014-03-01') AND year('2014-03-01')
 ```
 
 - Vous aurez besoin de fonctions de temps pour cette requête
@@ -71,7 +71,7 @@ select * from ventes WHERE ID_ARTICLE = 500
 ### Quelles sont les tickets émis entre les mois de mars et avril 2014 ?
 
 ```mysql
-
+SELECT ANNEE , NUMERO_TICKET , DATE_VENTE from ticket where year(DATE_VENTE)= 2014 AND month(DATE_VENTE) In ('3' , '4')
 ```
 
 - Vous devrez utiliser la clause `IN` pour cette requête
@@ -79,13 +79,13 @@ select * from ventes WHERE ID_ARTICLE = 500
 ### Quelles sont les tickets émis au mois de mars et juin 2014 ?
 
 ```mysql
-
+SELECT ANNEE , NUMERO_TICKET , DATE_VENTE from ticket where year(DATE_VENTE)= 2014 AND month(DATE_VENTE) In ('3' , '6')
 ```
 
 ### Afficher la liste des bières classée par couleur. (Afficher l’id et le nom)
 
 ```mysql
-
+SELECT ID_ARTICLE, NOM_ARTICLE from article inner join couleur order by NOM_COULEUR
 ```
 
 - Vous aurez besoin d'une jointure avec la table `couleur`
@@ -94,7 +94,7 @@ select * from ventes WHERE ID_ARTICLE = 500
 ### Afficher la liste des bières n’ayant pas de couleur. (Afficher l’id et le nom)
 
 ```mysql
-
+SELECT ID_ARTICLE, NOM_ARTICLE, ID_Couleur from article where ID_Couleur is null
 ```
 
 - La table qui vous intéresse est la table `article`
